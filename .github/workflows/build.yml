@@ -1,0 +1,30 @@
+
+name: Build Minecraft Plugin
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Repository herunterladen
+        uses: actions/checkout@v4
+
+      - name: Java installieren
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+
+      - name: Plugin bauen
+        run: mvn --batch-mode package
+
+      - name: JAR bereitstellen
+        uses: actions/upload-artifact@v4
+        with:
+          name: CrashPlugin-JAR
+          path: target/*.jar
