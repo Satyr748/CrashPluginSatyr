@@ -1,0 +1,16 @@
+name: CrashPlugin
+version: 1.0.0
+main: de.server.crash.CrashPlugin
+api-version: '1.21'
+description: Admin-Befehl zum Trennen von Spielern
+
+commands:
+  crash:
+    description: Trennt einen Spieler vom Server
+    usage: /crash <Spieler>
+    permission: crash.use
+
+permissions:
+  crash.use:
+    description: Erlaubt die Verwendung von /crash
+    default: op
